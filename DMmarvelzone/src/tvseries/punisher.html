@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>punshier</title>
+</head>
+<script src="../Bootstrap/js/jquery/2.0.0/jquery.min.js"></script>
+<link href="../Bootstrap/css/bootstrap/3.3.6/bootstrap.min.css" rel="stylesheet">
+<script src="../Bootstrap/js/bootstrap/3.3.6/bootstrap.min.js"></script>
+<link href="video-js.css" rel="stylesheet">
+<script src="video.js"></script>
+<body background="../images/infinitywar.jpg" style="width: 100%;">
+<br>
+    <div>
+        <table width="100%">
+            <tr height="50px">
+                <td width="200px">
+                    <a href="../views/fontpage.html"><img src="../images/marvellogo.png"></a>
+                </td>
+                <td align="right" width="240px">
+                    <div class="input-group" style="margin-right: 10px;width:200px">
+                        <input class="form-control" placeholder="搜索">
+                        <span class="input-group-btn">
+                        <input type="hidden">
+                        <button class="btn btn-default" type="submit">
+                            <span class="glyphicon glyphicon-search"></span>
+                        </button>
+                    </span>
+                    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+    <br>
+    <nav>
+        <div class="nav bg-danger">
+        <span class="pull-left">
+            <a href="../views/fontpage.html">首页</a>
+            <a href="../views/movies.html">电影系列</a>
+            <a href="../views/tvseries.html">电视剧系列</a>
+            <a href="../views/news.html">周边新闻</a>
+        </span>
+            <span class="pull-right">
+            <a href="#nowhere" data-toggle="modal" data-target="#login">
+                <span class="glyphicon glyphicon-log-in"></span>
+                <span id="loginText">登录</span>
+            </a>
+            <a href="#nowhere" data-toggle="modal" data-target="#register">
+                <span class="glyphicon glyphicon-user"></span>
+                <span id="registText">注册</span>
+            </a>
+        </span>
+        </div>
+    </nav>
+    <div id="register" class="modal fade" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <button class="close" data-dismiss="modal">
+                        <span>&times;</span>
+                    </button>
+                </div>
+                <div class="modal-title">
+                    <h1 class="text-center">注册</h1>
+                </div>
+                <div class="modal-body">
+                    <form class="form-group" action="">
+                        <div class="form-group">
+                            <label for="">用户名</label>
+                            <input class="form-control" type="text" placeholder="6-15位字母或数字">
+                        </div>
+                        <div class="form-group">
+                            <label for="">密码</label>
+                            <input class="form-control" type="password" placeholder="至少6位字母或数字">
+                        </div>
+                        <div class="form-group">
+                            <label for="">再次输入密码</label>
+                            <input class="form-control" type="password" placeholder="至少6位字母或数字">
+                        </div>
+                        <div class="form-group">
+                            <label for="">邮箱</label>
+                            <input class="form-control" type="email" placeholder="例如:***@***.com">
+                        </div>
+                        <div class="text-right">
+                            <button class="btn btn-primary" type="submit" style="background-color: #3a8cd2b3;border: 0px solid transparent;">提交</button>
+                            <button class="btn btn-danger" data-dismiss="modal" style="background-color: #fb5e5999;border: 0px solid transparent;">取消</button>
+                        </div>
+                        <a href="" data-toggle="modal" data-dismiss="modal" data-target="#login">
+                            <font style="font-size: 13px;">已有账号？点我登录</font>
+                        </a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 注册 end-->
+    <!-- 登录 -->
+    <div id="login" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <button class="close" data-dismiss="modal">
+                        <span>&times;</span>
+                    </button>
+                </div>
+                <div class="modal-title">
+                    <h1 class="text-center">登录</h1>
+                </div>
+                <div class="modal-body">
+                    <form class="form-group" action="../backend/login.php" method="post">
+                        <div class="form-group">
+                            <label for="">用户名</label>
+                            <input class="form-control" type="text" placeholder="" name="username" id="username">
+                        </div>
+                        <div class="form-group">
+                            <label for="">密码</label>
+                            <input class="form-control" type="password" placeholder="" name="password" id="password">
+                        </div>
+                        <div class="text-right">
+                            <button class="btn btn-primary" type="submit" style="background-color: #3a8cd2b3; border: 0px solid transparent;" id="loginb">登录</button>
+                            <button class="btn btn-danger" data-dismiss="modal" style="background-color: #fb5e5999;border: 0px solid transparent;">取消</button>
+                        </div>
+                        <a href="" data-toggle="modal" data-dismiss="modal" data-target="#register">
+                            <font style="font-size: 13px;">还没有账号？点我注册</font>
+                        </a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <nav style="width: 350px;margin-left: 20px;">
+        <div class="panel panel-danger">
+            <div class="panel-heading" style="background-color: #ee5b5e">
+                <a href="../views/movies.html">电视剧系列/</a>
+                <a href="#nowhere">惩罚者/</a>
+                <a href="punisher.html">惩罚者第一季</a>
+            </div>
+        </div>
+    </nav>
+    <script type="text/javascript">
+        $(function () {
+            $("button").click(
+                function () {
+                    console.log(this.value);
+                    var episode=this.value;
+                    document.getElementById("punisher").src ='../TV/punisher/'+episode+'.mp4';
+                }
+            );
+        });
+    </script>
+    <table class="vediowindow">
+        <tr height="400px">
+            <td width="75%">
+                <!--<script>-->
+                <!--function changeepisode() {-->
+                <!--var episode=document.getElementById("eid").value;-->
+                <!--var tvsrc='../TV/punisher/'+episode+'.mp4';-->
+                <!--document.getElementById("punisher").src =tvsrc;-->
+                <!--}-->
+                <!--</script>-->
+                <video id="punisher" class="video-js vjs-default-skin" controls preload="none" style="width:90%;height: 400px;margin-left: 30px;"
+                       poster="../images/punisher.jpg"
+                       data-setup="{}">
+                    <source src="../TV/punisher/1.mp4" type='video/mp4' />
+                    <track kind="captions" src="demo.captions.vtt" srclang="en" label="English"></track><!-- Tracks need an ending tag thanks to IE9 -->
+                    <track kind="subtitles" src="demo.captions.vtt" srclang="en" label="English"></track><!-- Tracks need an ending tag thanks to IE9 -->
+                </video>
+                <script type="text/javascript">
+                    var myPlayer = videojs('punisher');
+                    videojs("punisher").ready(function(){
+                        var myPlayer = this;
+                        myPlayer.play();
+                    });
+                </script>
+            </td>
+            <td>
+                <div class="outline">
+                    <h2>惩罚者第一季</h2>
+                    <p>讲述卡斯特成为“惩罚者”前是美国海军陆战队的战术狙击手，后因家人被残忍杀害而开始以暴制暴、对抗黑暗势力。</p>
+                    <br>
+                    <h4>选集</h4>
+                    <br>
+                    <div class="btn-group" role="group" aria-label="EPISODE">
+                        <button type="button" class="btn btn-default" value="1" >1</button>
+                        <button type="button" class="btn btn-default" value="2" >2</button>
+                        <button type="button" class="btn btn-default" value="3" >3</button>
+                        <button type="button" class="btn btn-default" value="4" >4</button>
+                        <button type="button" class="btn btn-default" value="5" >5</button>
+                        <button type="button" class="btn btn-default" value="6" >6</button>
+                        <button type="button" class="btn btn-default" value="7" >7</button>
+                        <button type="button" class="btn btn-default" value="8" >8</button>
+                        <button type="button" class="btn btn-default" value="9" >9</button>
+                        <button type="button" class="btn btn-default" value="10" >10</button>
+                        <button type="button" class="btn btn-default" value="11" >11</button>
+                        <button type="button" class="btn btn-default" value="12" >12</button>
+                        <button type="button" class="btn btn-default" value="13" >13</button>
+                    </div>
+                </div>
+
+            </td>
+        </tr>
+    </table>
+<br>
+<div class="btm">
+    <p class="author">ZYCHOOO COPYRIGHT</p>
+</div>
+</body>
+</html>
+<style>
+    div.nav{
+        height:45px;
+    }
+    .nav{
+        padding-left:0;
+        margin-bottom:0;
+        list-style: none;
+    }
+    div.nav a{
+        line-height:45px;
+        color: #ffffff;
+        font-weight: bold;
+        margin-left:12px;
+        margin-right:12px;
+        text-decoration: none;
+    }
+    .bg-danger{
+        color: #ffffff;
+        background: #ee1d20;
+    }
+
+    div.panel-danger a{
+        font-size: 15px;
+        font-family:bolder;
+        color: #ffffff;
+        text-decoration: none;
+    }
+    table.vediowindow{
+        width:95%;
+        height:500px;;
+        margin:0 auto;
+        padding-left: 30px;
+        background-color: #0f0f0f;
+        border-collapse: collapse;
+    }
+    div.outline{
+        background-color: #222222;
+        height:400px;
+        margin-right:40px;
+        margin-top: -40px;
+        word-wrap: break-word;
+        word-break:break-all;
+        overflow: hidden;
+    }
+    div.outline h2{
+        color: #d9edf7;
+    }
+    div.outline p{
+        font-size: 18px;
+        color: #d9edf7;
+    }
+    div.outline h4{
+        color: #d9edf7;
+    }
+    div.btm{
+        position: absolute;
+        width:100%;
+        height:190px;
+        background-color: #000000;
+    }
+    p.author{
+        font:10px bold;
+        color: #ffffff;
+        position: absolute;
+        bottom:0px;
+        right:0px;
+    }
+    .row {
+        background-color: #95c4f94d;
+        margin: auto 10%;
+        border-width: 0 0 0 0;
+        box-shadow: #080a0ecc 0px 0px 20px 3px;
+        border-radius: 35px 35px 35px 35px;
+    }
+    /*a链接 在被选中和点击时  的字体颜色，粗度，大小*/
+
+    a {
+        color: #FFFFFFB3;
+        font-weight: bolder;
+        text-align: center;
+        font-size: 18px;
+    }
+
+    a:hover {
+        color: #FFFFFF;
+        text-decoration-line: none;
+        font-size: 16px;
+    }
+    /* body相关属性 */
+
+    /*body {*/
+    /*list-style: none;*/
+    /*!*去掉ui和li的 点*!*/
+    /*-webkit-background-size: cover;*/
+    /*-moz-background-size: cover;*/
+    /*-o-background-size: cover;*/
+    /*background-size: cover;*/
+    /*background-attachment: fixed;*/
+    /*background-position: center bottom;*/
+    /*color: #fff;*/
+    /*!*background-color: #333;*!*/
+    /*font-family: 'microsoft yahei', Arial, sans-serif;*/
+    /*}*/
+    /*此处是暗黑风格 整体为黑色*/
+
+    #title {
+        width: auto;
+        text-align: center;
+        font-size: 140px;
+        margin-top: 200px;
+        transition: font-size 2s;
+    }
+
+    #title:hover {
+        font-size: 148px;
+    }
+
+    .aTopAndBottom {
+        height: auto;
+        text-align: center;
+        padding: 10px 0px;
+        min-width: 20px;
+    }
+
+    .netease_Player {
+        position: absolute;
+        display: none;
+    }
+
+    .dropdown-menu>li>a:hover,
+    .dropdown-menu>li>a:focus {
+        color: #fff !important;
+        background-color: #fff0 !important;
+        font-size: 19px;
+    }
+
+    .dropup .dropdown-menu {
+        background-color: #fff0 !important;
+        text-decoration: none;
+        margin-bottom: 10px;
+        border: 0px;
+        border-radius: 16px 16px 0px 0px;
+        box-shadow: none;
+        margin-bottom: 14px;
+    }
+
+    .dropdown-menu>li>a {
+        color: #fff;
+        padding: 12px;
+        font-weight: bolder;
+    }
+
+    .navbar {
+        min-height: 46px;
+    }
+    /*登录框  最大宽度 与上边距 重构*/
+
+    .modal-dialog {
+        width: 350px;
+        margin: 60px auto;
+    }
+    /*登录框 背景颜色与透明度，边框线粗度，边框弧度，边框阴影 重写*/
+
+    .modal-content {
+        background-color: #afd2ff66;
+        border: 0px solid rgba(0, 0, 0, .2);
+        border-radius: 31px;
+        box-shadow: 0px 0px 40px 21px rgba(131, 151, 201, 0.5);
+        -webkit-box-shadow: 0px 0px 40px 21px rgba(131, 151, 201, 0.5);
+        box-shadow: 0px 0px 40px 21px rgba(131, 151, 201, 0.5);
+    }
+    /* 登录框位置重写 */
+
+    .modal-body {
+        position: relative;
+        padding: 10px 34px;
+    }
+    /*输入框 背景颜色与透明度重构*/
+
+    .form-control {
+        background-color: #fffc;
+    }
+
+</style>
+<script>
+    videojs.options.flash.swf = "video-js.swf";
+    $(function () {
+        $("[data-toggle='tooltip']").tooltip();
+    });
+    /*各组件根据打开窗口大小  初始化响应一次*/
+    baseOnWindowSizeToChange();
+
+    /*窗口宽度高度发生变化时，触发各组件响应函数*/
+    $(window).resize(
+        function() {
+            baseOnWindowSizeToChange();
+        }
+    );
+
+    /*窗口宽度高度发生变化时，各组件应当的响应*/
+    function baseOnWindowSizeToChange() {
+        //获取浏览器高度
+        var h = $(window).height();
+        //获取浏览器宽度
+        var w = $(window).width();
+        /*console.log("当前浏览器高度为：" + h + "px");
+          console.log("当前浏览器宽度为：" + w + "px");*/
+
+        //获取底部单个选项宽度大小并赋给上拉表单宽度
+        var dropdownWidth = $(".bottomSelect").width();
+        $(".dropdownSelect").css("width", dropdownWidth);
+
+        /*主标题在窗口大于500时显示，小于500时隐藏*/
+        if(h < 500) {
+            $("#title").fadeOut(700); //id为title的元素0.7秒内消失
+        } else {
+            $("#title").fadeIn(1200); //id为title的元素1秒内显示
+        }
+
+        /*输入框组在浏览器高度小于600时，高度变紧凑，大于600还原*/
+        if(h < 600) {
+            $(".form-group").css("margin-bottom","0");
+        } else {
+            $(".form-group").css("margin-bottom","15");
+        }
+
+        /* 当浏览器宽度小于1100时：
+         * 标题大小 根据浏览器宽度大小变换而变换
+         * 登录 注册只显示图标
+         *
+         * 大于1100时还原
+         * */
+        if(w < 1100) {
+            $("#title").css("font-size", w / 10);
+            $("#loginText").text(" ");
+            $("#registText").text(" ");
+        } else {
+            $("#title").css("font-size", "140px");
+            $("#loginText").text("登录");
+            $("#registText").text("注册");
+        }
+        if(w < 400) {
+            $(".modal-dialog").css("width","90%");
+        }else{
+            $(".modal-dialog").css("width","350px");
+        }
+    }
+
+    /* 打开网易云播放器 */
+    var isopen = 0;
+    function openMyMusic() {
+        console.log(isopen);
+        if(isopen == 0) {
+            $(".netease_Player").css("display", "block");
+            isopen = 1;
+        } else {
+            $(".netease_Player").css("display", "none");
+            isopen = 0;
+        }
+    }
+    /* 检查注册名是否合法 */
+    function checkUsername(){
+        var name= $('#name').val();
+        console.log(name);
+        if(name!=""){
+            $.ajax({
+                type : "post",
+                async : true,
+                url : 'Manager/login',
+                data : {
+                    name : name,
+                },
+                success:function(data){
+                    $('#check').text(data);
+                }
+            })
+        }else{
+            $('#check').text("");
+        }
+    }
+</script>
